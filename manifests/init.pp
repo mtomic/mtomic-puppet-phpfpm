@@ -49,6 +49,5 @@ class phpfpm {
 	service { 'php5-fpm':
 		ensure => running,
 		enable => true,
-		require => Package['php5-cgi','php-apc','php5-cli','php5-mysql','php5-curl','php5-mcrypt','php5-gd'],
 	}
 }
