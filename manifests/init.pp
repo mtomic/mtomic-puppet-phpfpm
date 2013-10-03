@@ -34,18 +34,18 @@ class phpfpm {
 	package { 'php5-cli':
 		ensure => present,
 	}
-	file { '/etc/php5/conf.d/apc.ini':
-		ensure  => file,
-		mode    => 644,
-		source  => 'puppet:///modules/phpfpm/apc.ini',
-		require => Package['php-apc'],
-	}
-	file { '/etc/php5/cli/conf.d/apc.ini':
-                ensure  => file,
-                mode    => 644,
-                source  => 'puppet:///modules/phpfpm/apc.ini',
-                require => Package['php-apc'],
-        }
+#	file { '/etc/php5/conf.d/apc.ini':
+#		ensure  => file,
+#		mode    => 644,
+#		source  => 'puppet:///modules/phpfpm/apc.ini',
+#		require => Package['php-apc'],
+#	}
+#	file { '/etc/php5/cli/conf.d/apc.ini':
+#               ensure  => file,
+#               mode    => 644,
+#                source  => 'puppet:///modules/phpfpm/apc.ini',
+#                require => Package['php-apc'],
+#        }
 	service { 'php5-fpm':
 		ensure => running,
 		enable => true,
