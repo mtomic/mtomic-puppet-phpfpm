@@ -2,38 +2,37 @@ class phpfpm {
 	exec { "add_php5_4":
 		command => "add-apt-repository ppa:ondrej/php5; apt-get update;",
 		path    => "/usr/bin/",
-		before  => Package['php5-fpm'],
+		refreshonly => true,
 	}
 	package { 'php5-fpm':
 		ensure => present,
 	}
+	package { 'php-pear':
+		ensure => present,
+	}
+	package { 'php5-user-cache':
+		ensure => present,
+	}
 	package { 'php5-cgi':
 		ensure => present,
-		require => Package['php5-fpm'],
 	}
 	package { 'php5-curl':
 		ensure => present,
-		require => Package['php5-fpm'],
 	}
 	package { 'php5-mysql':
 		ensure => present,
-		require => Package['php5-fpm'],
 	}
 	package { 'php5-gd':
 		ensure => present,
-		require => Package['php5-fpm'],
 	}
 	package { 'php-apc':
 		ensure => present,
-		require => Package['php5-fpm'],
 	}
 	package { 'php5-mcrypt':
 		ensure => present,
-		require => Package['php5-fpm'],
 	}
 	package { 'php5-cli':
 		ensure => present,
-		require => Package['php5-fpm'],
 	}
 	file { '/etc/php5/conf.d/apc.ini':
 		ensure  => file,
