@@ -1,4 +1,7 @@
 class phpfpm {
+	exec { "add_php5_4":
+		command => "add-apt-repository ppa:ondrej/php5; apt-get update;",
+	}
 	package { 'php5-fpm':
 		ensure => present,
 	}
