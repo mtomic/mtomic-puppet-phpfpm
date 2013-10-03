@@ -2,6 +2,9 @@ class phpfpm {
 	package { 'php5-fpm':
 		ensure => present,
 	}
+	package { 'php5-cgi':
+		ensure => present,
+	}
 	package { 'php5-curl':
 		ensure => present,
 	}
@@ -35,6 +38,6 @@ class phpfpm {
 	service { 'php5-fpm':
 		ensure => running,
 		enable => true,
-		require => Package['php-apc','php5-cli','php5-mysql','php5-curl','php5-mcrypt','php5-gd'],
+		require => Package['php5-cgi','php-apc','php5-cli','php5-mysql','php5-curl','php5-mcrypt','php5-gd'],
 	}
 }
