@@ -11,10 +11,10 @@ class php5-fpm {
 	
 	      exec { 'add_php_repo':
 	        command => $add_repo_cmd,
-	        notify  => Exec['update_repos'],
+	        notify  => Exec['update_php_repos'],
 	        unless  => '/usr/bin/test -f /etc/apt/sources.list.d/ondrej-php5-trusty.list'
 	      }
-	      exec { 'update_repos':
+	      exec { 'update_php_repos':
 	        command     => $update_repos_cmd,
 	        require     => Exec['add_php_repo'],
 	        before      => Package['php5-fpm'],
