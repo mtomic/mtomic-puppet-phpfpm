@@ -12,7 +12,7 @@ class php5-fpm {
 	      exec { 'add_php_repo':
 	        command => $add_repo_cmd,
 	        notify  => Exec['update_repos'],
-	        unless  => '/usr/bin/test -f /etc/apt/sources.list.d/ondrej-php5-precise.list'
+	        unless  => '/usr/bin/test -f /etc/apt/sources.list.d/ondrej-php5-trusty.list'
 	      }
 	      exec { 'update_repos':
 	        command     => $update_repos_cmd,
