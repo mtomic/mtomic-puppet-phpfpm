@@ -23,7 +23,7 @@ class php5-fpm {
 	    }
 	
 	    default: {
-	      fail("The newrelic_server_monitor module does not support ${::osfamily}.")
+	      fail("The php5-fpm module does not support ${::osfamily}.")
 	    }
 	}
 
