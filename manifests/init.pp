@@ -6,7 +6,7 @@
 class php5-fpm {
 	case $::osfamily {
 	    'Debian': {
-	      $add_repo_cmd     = '/usr/bin/apt-get-repository -y ppa:ondrej/php5'
+	      $add_repo_cmd     = '/usr/bin/add-apt-repository -y ppa:ondrej/php5'
 	      $update_repos_cmd = '/usr/bin/apt-get update -y -qq'
 	
 	      exec { 'add_php_repo':
@@ -28,22 +28,29 @@ class php5-fpm {
 	}
 
 	package { 'php5-fpm':
-		ensure => present,
-	}
+                ensure => present,
+                require => Exec['add_php_repo'],
+        }
+
 	package { 'php5-curl':
 		ensure => present,
+		require => Exec['add_php_repo'],
 	}
 	package { 'php5-mysql':
 		ensure => present,
+		require => Exec['add_php_repo'],
 	}
 	package { 'php5-gd':
 		ensure => present,
+		require => Exec['add_php_repo'],
 	}
 	package { 'php5-mcrypt':
 		ensure => present,
+		require => Exec['add_php_repo'],
 	}
 	package { 'php5-cli':
 		ensure => present,
+		require => Exec['add_php_repo'],
 	}
 	service { 'php5-fpm':
 		ensure => running,
